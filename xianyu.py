@@ -38,7 +38,7 @@ formatter = colorlog.ColoredFormatter(
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-d = u2.connect("SNU0220A15007866")
+d = u2.connect("LMG820NUM29d75463")
 dinfo = d.info
 d_displayHeight = dinfo['displayHeight']
 d_displayWidth = dinfo['displayWidth']
@@ -157,7 +157,7 @@ def del_temp_file():
 
 def open_page_by_keyword(keyword):
     TimeUtil.random_sleep()
-    d(resourceId="com.taobao.idlefish:id/title").click()
+    d(resourceId="com.taobao.idlefish:id/search_bar_layout").click()
     d.send_keys(keyword, clear=True)
     d.press('enter')
 
@@ -218,20 +218,7 @@ def get_list_data():
 
 
 def usage():
-    message = """
-    ######################################################################################################################
-                                                   免责声明                                                               
-    此工具仅限于学习研究，用户需自己承担因使用此工具而导致的所有法律和相关责任！作者不承担任何法律责任！                 
-    ######################################################################################################################
-    """
-    logger.error(textwrap.dedent(message))
-    while True:
-        user_input = input("如果您同意本协议, 请输入Y继续: (y/n) ")
-        if user_input.lower() == "y":
-            break
-        elif user_input.lower() == "n":
-            sys.exit(0)
-
+    return
 
 def main_exit():
     d.set_fastinput_ime(False)
@@ -266,6 +253,6 @@ def main(keyword, max_page):
 
 
 if __name__ == '__main__':
-    keyword = '餐饮券'
+    keyword = '户外装备'
     max_page = 5  # 向上滑动次数
     main(keyword=keyword, max_page=max_page)
